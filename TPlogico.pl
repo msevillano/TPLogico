@@ -38,7 +38,7 @@ esClasico(breakingBad).
 emisora(Serie, Cadena):-
 	serie(Serie, _, accion(_, Cadena)).
 
-emisora(Serie, Emisora):-
+emisora(Serie, Cadena):-
 	serie(Serie, _, comedia(_ ,_ ,Cadena)).
 
 % Punto 4
@@ -60,7 +60,7 @@ cuantosLaMiran(Cantidad,Serie):-
 
 % Punto 6
 esFamoso(Persona):- 
-	siempreProtagonista(Persona), trabajaEn(Persona, Serie), muyVista(Persona).
+	siempreProtagonista(Persona), trabajaEn(Persona, Serie), muyVista(Serie).
 
 esFamoso(Persona):-
 	siempreProtagonista(Persona), forall((trabajaEn(Persona, Serie), serie(Serie, Temporadas, _)), Temporadas > 4).
@@ -90,7 +90,7 @@ puedeContratarA(Persona):-
 	soloUnaSerie(Persona), actorSecundario(Persona, Serie), menosTresT(Serie).
 
 soloUnaSerie(Persona):-
-	trabajaEn(Persona, Serie), forall(trabajaEn(Actor, UnicaSerie), Serie == UnicaSerie).
+	trabajaEn(Persona, Serie), forall(trabajaEn(Persona, UnicaSerie), Serie == UnicaSerie).
 
 actorSecundario(Persona,Serie):- 
 	actor(Persona, secundario(Serie)).
