@@ -1,4 +1,4 @@
-% Punto 1
+% Punto 1 - Modelado De Informacion y Principio de universo cerrado(Todo lo que no esta en mi base de conocimientos se presume Falso)
 serie(dexter, 8, drama(800000)).
 serie(scandal, 2, drama(500000)).
 serie(breakingBad, 5, drama(10000000)).
@@ -16,14 +16,14 @@ actor(jeffPerry, secundario(scandal)).
 actor(jenniferAniston, protagonista(friends)).
 actor(jenniferAniston, secundario(prisonBreak)).
 
-% Punto 2 
+% Punto 2 Inversivilidad, se puede consultar trabajaEn(aaronPaul, breakingBad) y obtener True or False; o consultar trabajaEn(Persona, breakingBad) y obtener los actores de breakingBad
 trabajaEn(Persona, Serie):-
 	actor(Persona,protagonista(Serie)).
 
 trabajaEn(Persona, Serie):-
 	actor(Persona,secundario(Serie)).
 
-% Punto 3
+% Punto 3 - polimorfismo, el predicado esClasico se da cuenta del tipo de serie que recibe y opera distinto en caso de ser comedia o accion 
 esClasico(Serie):-
 	serie(Serie, _, comedia(_, Fecha, _)), Fecha < 2006.
 
@@ -58,7 +58,7 @@ cuantosLaMiran(Cantidad, Serie):-
 cuantosLaMiran(Cantidad,Serie):-
 	serie(Serie, _, comedia(Cantidad, _, _)).
 
-% Punto 6
+% Punto 6 - Cuantificador universal (TODAS las series en las que trabaja la persoa deben tener =4 temporadas o ser emitidas por Fox/Warner); negacion en la funcion muyVista
 esFamoso(Persona):- 
 	siempreProtagonista(Persona), trabajaEn(Persona, Serie), muyVista(Serie).
 
